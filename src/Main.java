@@ -21,12 +21,6 @@ public class Main {
         stringUtil.collectWordsFromStringIgnorePunctuationAndSpaceRegardless(":.").
                 stream().forEach(t->{System.out.println(t);});
 
-        Integer a = 42;
-        Integer b = 42;
-        System.out.println(a == b);
-        Integer c = 666;
-        Integer d = 666;
-        System.out.println(c == d);
     }
 
 }
