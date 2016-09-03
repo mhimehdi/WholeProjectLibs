@@ -8,6 +8,10 @@ import java.util.ArrayList;
 public class MainTest
 {
 
+    void Init()
+    {
+
+    }
 
     public MainTest()
     {
