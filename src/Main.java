@@ -1,4 +1,5 @@
 import com.javaUtils.StringUtil;
+import com.tests.TestStreamReader;
 
 
 /**
@@ -12,6 +13,8 @@ public class Main {
         System.out.println("******************************************");
         System.out.println("Tests Start:");
         System.out.println("******************************************");
+
+        TestStreamReader.testConvertFileToLineList();
 
 
         System.out.println("******************************************");

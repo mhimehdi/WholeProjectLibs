@@ -45,7 +45,8 @@ public class StreamReader
 
         return lList;
     }
-    public  String  readFromFile( String aInFileName) throws IOException
+    //we'll be used for files with small size
+    public  String  readFromFile(String aInFileName) throws IOException
     {
         String content = null;
         File file = new File(aInFileName); //for ex foo.txt
