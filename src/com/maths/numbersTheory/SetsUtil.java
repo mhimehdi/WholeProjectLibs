@@ -1,4 +1,6 @@
-package com.maths;
+package com.maths.numbersTheory;
+
+import com.maths.numbersTheory.Couple;
 
 import java.util.HashSet;
 import java.util.Set;

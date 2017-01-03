@@ -1,4 +1,4 @@
-package com.javaUtils;
+package com.javaUtils.time;
 
 import javax.annotation.PostConstruct;
 import java.text.SimpleDateFormat;
@@ -19,11 +19,12 @@ public class DateUtil {
     }
 
     public static String getStartDate(){
-        Calendar cal = Calendar.getInstance();
+       /* Calendar cal = Calendar.getInstance();
         cal.setTime(new Date());
         cal.add(Calendar.DATE, -1);
         String endDate = getDateAsString(cal.getTime());
-        return endDate;
+        return endDate;*/
+        return Calendar.getInstance().getTime().toString();
     }
 
     public static String getEndDate(){

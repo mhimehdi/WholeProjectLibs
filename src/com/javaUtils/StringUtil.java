@@ -1,34 +1,42 @@
 package com.javaUtils;
 
+import com.logs.StringsProperties;
+
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
+ * PackageName javaUtils
  * Created by mhafidi on 29/08/2016.
  */
-public class StringUtil
+public class StringUtil implements ObjectNature
 {
     protected String lStringEx;
 
     public StringUtil(String aInString)
     {
-        lStringEx=aInString;
+        lStringEx = aInString;
     }
-    public void replace( String aInTarget, String aInReplacement)
+
+    public void replace(String aInTarget, String aInReplacement)
     {
         Pattern p = Pattern.compile(aInTarget);
         Matcher m = p.matcher(lStringEx);
         lStringEx = m.replaceAll(aInReplacement);
     }
+
     public String getlStringEx()
     {
         return lStringEx;
     }
+
     public void setlStringEx(String aInString)
     {
         lStringEx = aInString;
     }
+
+
 
     public static String getSubstringInBetween(String in, String begin, String end)
     {
@@ -39,12 +47,11 @@ public class StringUtil
             if (!"".equals(begin) && !"".equals(end))
             {
                 int indexBegin = in.indexOf(begin);
-                int indexEnd = in.indexOf(end,indexBegin);
+                int indexEnd = in.indexOf(end, indexBegin);
 
                 ret = in.substring(indexBegin + begin.length(), indexEnd);
             }
-        }
-        catch (Throwable t)
+        } catch (Throwable t)
         {
             // System.out.println("StringUtil.getSubstringInBetween(), any of {begin,end} are not contained");
         }
@@ -60,13 +67,13 @@ public class StringUtil
 
     public int computeRegexString(String aInRegex)
     {
-        int $nb=0;
-        String tmp= lStringEx;
+        int $nb = 0;
+        String tmp = lStringEx;
         Pattern p = Pattern.compile(aInRegex);
         Matcher m = p.matcher(tmp);
-        while(m.find())
+        while (m.find())
         {
-            tmp = tmp.replaceFirst(aInRegex,"");
+            tmp = tmp.replaceFirst(aInRegex, "");
             m = p.matcher(tmp);
             $nb++;
 
@@ -84,7 +91,7 @@ public class StringUtil
     public ArrayList<String> collectWordsFromStringIgnorePunctuationAndSpace()
     {
 
-        ArrayList<String> lWords =new ArrayList<>();
+        ArrayList<String> lWords = new ArrayList<>();
         Pattern p = Pattern.compile("[\\w']+");
         Matcher m = p.matcher(lStringEx);
 
@@ -95,6 +102,7 @@ public class StringUtil
         }
         return lWords;
     }
+
     /*
     *Description: from a sample string extract all the words and ignoring space and punctuation
      *  and store them into an arrayList
@@ -105,8 +113,8 @@ public class StringUtil
     public ArrayList<String> collectWordsFromStringIgnorePunctuationAndSpaceRegardless(String aInPunctuation)
     {
 
-        ArrayList<String> lWords =new ArrayList<>();
-        Pattern p = Pattern.compile("[\\w"+aInPunctuation+"']+");
+        ArrayList<String> lWords = new ArrayList<>();
+        Pattern p = Pattern.compile("[\\w" + aInPunctuation + "']+");
         Matcher m = p.matcher(lStringEx);
 
         while (m.find())
@@ -117,6 +125,27 @@ public class StringUtil
         return lWords;
     }
 
+    static public void copyString(String aInTarget, String aInOrigin)
+    {
+        aInTarget = aInOrigin;
+    }
+
+    @Override
+    public boolean isItUsable(Object o)
+    {
+         try
+         {
+             StringUtil testNature= (StringUtil) o;
+         }
+         catch (Exception ex)
+         {
+             logger.logWarning(CLASS_NAME,
+                     StringsProperties.MSG_OBJECT_NATURE_IS_NOT_APPROPRIATE.toString());
+             return false;
+
+         }
+        return true;
+    }
 
     //converting strings to the right typo
 

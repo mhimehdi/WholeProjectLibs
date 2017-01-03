@@ -3,14 +3,14 @@ package com.javaUtils;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Created by mhafidi on 17/06/2016.
  */
 public class StreamReader
 {
-
-
     protected File file;
 
     public StreamReader(String aInFullFilePath)
@@ -19,23 +19,16 @@ public class StreamReader
     }
     public List convertFileToLineList() throws FileNotFoundException
     {
-        List lList = new ArrayList<String>();
+        List lList;
         String lLineToRead = null;
         if(file!=null && file.isFile())
         {
             FileReader lFileReader = new FileReader(file);
             BufferedReader lBufferedReader = new BufferedReader(lFileReader);
-            try {
-                while((lLineToRead=lBufferedReader.readLine())!=null)
-                {
-                    lList.add(lLineToRead);
-
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
+            lList = lBufferedReader.lines().collect(Collectors.toList());
         }
+        else
+            lList= new ArrayList<>();
         return lList;
 
     }
@@ -45,11 +38,11 @@ public class StreamReader
 
         return lList;
     }
-    //we'll be used for files with small size
+    //will be used for files with small size
     public  String  readFromFile(String aInFileName) throws IOException
     {
         String content = null;
-        File file = new File(aInFileName); //for ex foo.txt
+        File file = new File(aInFileName);
         FileReader reader = null;
         try {
             reader = new FileReader(file);
