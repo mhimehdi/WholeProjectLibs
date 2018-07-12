@@ -15,7 +15,7 @@ public class MainThreads
 {
     static private final String CLASS_NAME = MainThreads.class.getName();
     static private final String SKIP_LINE_LOG = "**************************************************************";
-    static private final String TEST_STRING = "network:MRBTS-1";
+    static private final String TEST_STRING = "network:BTS-1";
 
 
     public static void main(String args[])
